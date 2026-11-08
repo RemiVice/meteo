@@ -1,11 +1,14 @@
-// Garde les fichiers de l'application pour qu'elle s'ouvre vite (la météo, elle, vient toujours d'Internet)
-const VERSION = 'meteo-web-3';
-const FICHIERS = ['./', 'index.html', 'style.css', 'app.js', 'fond.js', 'icones.js', 'manifest.webmanifest', 'icone-180.png', 'icone-192.png', 'extras.js'];
-self.addEventListener('install', (e) => e.waitUntil(caches.open(VERSION).then((c) => c.addAll(FICHIERS))));
-self.addEventListener('activate', (e) => e.waitUntil(caches.keys().then((k) => Promise.all(k.filter((x) => x !== VERSION).map((x) => caches.delete(x))))));
+// Toujours prendre la version la plus récente sur Internet (sans copie périmée) ;
+// la copie gardée ne sert que si le téléphone n'a pas de connexion.
+const VERSION = 'meteo-web-4';
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (e) => e.waitUntil(caches.keys()
+  .then((k) => Promise.all(k.filter((x) => x !== VERSION).map((x) => caches.delete(x))))
+  .then(() => self.clients.claim())));
 self.addEventListener('fetch', (e) => {
   const u = new URL(e.request.url);
-  if (u.origin !== location.origin) return; // les données météo : toujours en direct
-  e.respondWith(fetch(e.request).then((r) => { const c = r.clone(); caches.open(VERSION).then((x) => x.put(e.request, c)); return r; })
-    .catch(() => caches.match(e.request)));
+  if (u.origin !== location.origin || e.request.method !== 'GET') return; // les données météo : toujours en direct
+  e.respondWith(fetch(e.request, { cache: 'no-cache' })
+    .then((r) => { const c = r.clone(); caches.open(VERSION).then((x) => x.put(e.request, c)); return r; })
+    .catch(() => caches.match(e.request, { ignoreSearch: true })));
 });

@@ -411,7 +411,7 @@
       choixHtml('🌊 Hauteur des marées', 'uniteMaree', [['m', 'Mètres'], ['pi', 'Pieds']]) +
       choixHtml('🗑️ Mon jour de collecte (Montmagny)', 'jourCollecte', [[1, 'Lundi'], [2, 'Mardi'], [3, 'Mercredi'], [4, 'Jeudi'], [5, 'Vendredi']]) +
       `<h3>📱 Installer sur l'iPhone</h3><p class="note">Dans Safari : bouton Partager (carré avec une flèche) → « Sur l'écran d'accueil ».</p>` +
-      `<p class="note">Version Web 2.0</p>`;
+      `<p class="note">Version Web 2.1 (vague lisse)</p>`;
     e.querySelectorAll('[data-cle]').forEach((b) => b.addEventListener('click', () => {
       let v = b.dataset.v; if (v === 'true') v = true; else if (v === 'false') v = false; else if (/^\d+$/.test(v)) v = +v;
       r()[b.dataset.cle] = v; A.ecrireMem('reglages', r()); Fond.afficher(r().fondAnime); afficherReglages(e); A.afficher();

@@ -22,40 +22,30 @@
       <span id="nom-ville">…</span> <span class="fleche">▾</span>
       <small id="region-ville"></small>
     </button>
-    <button id="btn-reglages" class="rond" aria-label="Paramètres">
+    <button class="rond" data-action="radar" aria-label="Radar">
       <svg viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">
-        <circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/>
-        <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></g></svg>
+        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6" opacity=".5"/><path d="M12 12L19 5"/></g><circle cx="16" cy="8" r="1.6" fill="#66FFB2"/></svg>
     </button>
+    <div class="avec-bacs">
+      <button id="btn-reglages" class="rond" aria-label="Paramètres">
+        <svg viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/>
+          <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></g></svg>
+      </button>
+      <div id="mini-bacs"></div>
+    </div>
   </header>
   <div id="contenu"><div class="chargement">Chargement de la météo…</div></div>
   <footer class="bas">
     <button id="btn-actualiser" class="discret">↻ Actualiser</button>
-    <p>Données : modèle canadien GEM (Environnement Canada), via Open-Meteo</p>
+    <button class="discret" data-action="organiser">☰ Organiser l'écran</button>
+    <p>Données : modèle canadien GEM et alertes d'Environnement Canada, via Open-Meteo</p>
   </footer>
 </main>
-
-<!-- Fenêtre : villes -->
-<section id="ecran-villes" class="ecran" hidden>
-  <div class="barre"><button class="retour" data-fermer>‹</button><h2>Mes villes</h2></div>
-  <div id="liste-villes"></div>
-  <button id="btn-gps" class="large">📍 Utiliser ma position</button>
-  <h3>Ajouter une ville</h3>
-  <form id="form-recherche" class="recherche">
-    <input id="champ-recherche" placeholder="Ex. : Rimouski" autocomplete="off">
-    <button type="submit">Chercher</button>
-  </form>
-  <div id="resultats"></div>
-</section>
-
-<!-- Fenêtre : paramètres -->
-<section id="ecran-reglages" class="ecran" hidden>
-  <div class="barre"><button class="retour" data-fermer>‹</button><h2>Paramètres</h2></div>
-  <div id="contenu-reglages"></div>
-</section>
 
 <script src="icones.js"></script>
 <script src="fond.js"></script>
 <script src="app.js"></script>
+<script src="extras.js"></script>
 </body>
 </html>

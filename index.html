@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Météo</title>
+<meta name="theme-color" content="#1C5BB8">
+<!-- iPhone : s'installe comme une application (Partager → Sur l'écran d'accueil) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Météo">
+<link rel="apple-touch-icon" href="icone-180.png">
+<link rel="icon" href="icone-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="fond"></canvas>
+<main id="app">
+  <header class="haut">
+    <button id="btn-ville" class="ville">
+      <span id="nom-ville">…</span> <span class="fleche">▾</span>
+      <small id="region-ville"></small>
+    </button>
+    <button id="btn-reglages" class="rond" aria-label="Paramètres">
+      <svg viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/>
+        <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></g></svg>
+    </button>
+  </header>
+  <div id="contenu"><div class="chargement">Chargement de la météo…</div></div>
+  <footer class="bas">
+    <button id="btn-actualiser" class="discret">↻ Actualiser</button>
+    <p>Données : modèle canadien GEM (Environnement Canada), via Open-Meteo</p>
+  </footer>
+</main>
+
+<!-- Fenêtre : villes -->
+<section id="ecran-villes" class="ecran" hidden>
+  <div class="barre"><button class="retour" data-fermer>‹</button><h2>Mes villes</h2></div>
+  <div id="liste-villes"></div>
+  <button id="btn-gps" class="large">📍 Utiliser ma position</button>
+  <h3>Ajouter une ville</h3>
+  <form id="form-recherche" class="recherche">
+    <input id="champ-recherche" placeholder="Ex. : Rimouski" autocomplete="off">
+    <button type="submit">Chercher</button>
+  </form>
+  <div id="resultats"></div>
+</section>
+
+<!-- Fenêtre : paramètres -->
+<section id="ecran-reglages" class="ecran" hidden>
+  <div class="barre"><button class="retour" data-fermer>‹</button><h2>Paramètres</h2></div>
+  <div id="contenu-reglages"></div>
+</section>
+
+<script src="icones.js"></script>
+<script src="fond.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

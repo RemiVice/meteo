@@ -47,12 +47,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .col .q { margin-top: auto; font-size: 12px; font-weight: 600; z-index: 1; text-shadow: 0 1px 3px #000; }
 .col .eau { position: absolute; left: 0; right: 0; bottom: 0;
   background: linear-gradient(rgba(110,193,245,.8), rgba(30,111,192,.93)); }
-.col .eau::before { content: ""; position: absolute; left: -40px; right: -40px; top: -5px; height: 10px;
-  background: radial-gradient(ellipse at 50% 100%, rgba(110,193,245,.8) 60%, transparent 62%) 0 0/24px 10px repeat-x;
-  animation: vague 2.2s linear infinite; }
+.col .eau::before { content: ""; position: absolute; left: -60px; right: -60px; top: -9px; height: 10px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='10' viewBox='0 0 60 10'%3E%3Cpath d='M0 5 Q15 0 30 5 T60 5 V10 H0Z' fill='rgba(110,193,245,0.8)'/%3E%3Cpath d='M0 5 Q15 0 30 5 T60 5' fill='none' stroke='rgba(255,255,255,0.55)' stroke-width='1.2'/%3E%3C/svg%3E") 0 0/60px 10px repeat-x; animation: vague 3s linear infinite; }
 .col .neige { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 40% 40% 0 0 / 12px 12px 0 0;
   background: linear-gradient(#fff, #d8e4f0); }
-@keyframes vague { to { transform: translateX(24px); } }
+@keyframes vague { to { transform: translateX(60px); } }
 
 .jour { display: flex; align-items: center; gap: 8px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.1); cursor: pointer; }
 .jour:last-child { border-bottom: 0; }

@@ -341,11 +341,11 @@
     const p = prochaines(l, 2), auj = new Date();
     let h = p.length ? p.map(([c, rep], i) => `<div class="${i ? 'pale' : 'gros'}">${A.nomJour(c.date, auj)} ${A.dateLongue(c.date)}${rep ? ' (reportée)' : ''}</div>` +
       (rep ? '<div class="note">⚠️ Collecte reportée à cause d\'un congé.</div>' : '') +
-      `<div class="bacs">${c.bacs.filter((b) => b !== 'MONSTRES').map((b) => svgBac(b, i ? 24 : 32) + `<span>${NOMS_BACS[b]}</span>`).join('')}</div>`).join('')
+      `<div class="bacs">${c.bacs.filter((b) => b !== 'MONSTRES').map((b) => `<span class="bac">${svgBac(b, i ? 24 : 32)}<span>${NOMS_BACS[b]}</span></span>`).join('')}</div>`).join('')
       : '<p class="note">Le calendrier de la Ville n\'est pas encore disponible pour les prochaines semaines.</p>';
     const mo = l.find((c) => c.date >= debutRecherche() && c.bacs.includes('MONSTRES'));
     if (mo) { const res = new Date(mo.date); do { res.setDate(res.getDate() - 1); } while (res.getDay() !== 5);
-      h += `<div class="bacs">${svgBac('MONSTRES', 30)}<div><b>Monstres : ${A.nomJour(mo.date, auj).toLowerCase()} ${A.dateLongue(mo.date)}</b><small class="note">${new Date() > res ? 'Réservation fermée pour cette collecte.' : 'Réserver avant 11 h, ' + A.nomJour(res, auj).toLowerCase() + ' ' + A.dateLongue(res) + ' : ville.montmagny.qc.ca/encombrant ou 418 248-3361'}</small></div></div>`; }
+      h += `<div class="monstres">${svgBac('MONSTRES', 30)}<div><b>Monstres : ${A.nomJour(mo.date, auj).toLowerCase()} ${A.dateLongue(mo.date)}</b><small class="note">${new Date() > res ? 'Réservation fermée pour cette collecte.' : 'Réserver avant 11 h, ' + A.nomJour(res, auj).toLowerCase() + ' ' + A.dateLongue(res) + ' : ville.montmagny.qc.ca/encombrant ou 418 248-3361'}</small></div></div>`; }
     return A.carte('Collecte des bacs', h + '<p class="note">Source : Ville de Montmagny · le jour se règle dans les Paramètres</p>');
   };
   function miniBacs() {

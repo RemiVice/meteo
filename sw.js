@@ -1,6 +1,6 @@
 // Toujours prendre la version la plus récente sur Internet (sans copie périmée) ;
 // la copie gardée ne sert que si le téléphone n'a pas de connexion.
-const VERSION = 'meteo-web-4';
+const VERSION = 'meteo-web-5';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (e) => e.waitUntil(caches.keys()
   .then((k) => Promise.all(k.filter((x) => x !== VERSION).map((x) => caches.delete(x))))

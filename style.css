@@ -163,3 +163,10 @@ input[type=range] { width: 100%; }
 .carte-pleine.moyenne { position: relative; height: 70vh; border-radius: 14px; }
 .etiquette { background: transparent; border: 0; box-shadow: none; color: #fff; font-weight: 700; text-shadow: 0 1px 4px #000; }
 .looks[hidden], [hidden] { display: none !important; }
+
+/* Collecte : chaque bac (icône + nom) reste ensemble et passe à la ligne s'il manque de place */
+.bacs { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 4px 0 8px; }
+.bacs .bac { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.bacs .bac span { margin: 0; }
+.monstres { display: flex; gap: 8px; align-items: flex-start; margin: 10px 0 6px; }
+.monstres > div { flex: 1; min-width: 0; } .monstres small { display: block; }
